@@ -4,17 +4,29 @@ Page({
   data: {
     naviConfigs: naviConfigs,
   },
-  
-  onLoad: function () {
-    
+
+  onLoad: function() {
+
   },
-  errorTap(e){
-    const idx = e.currentTarget.dataset.idx
-    if(idx == 1) {
-      wx.showToast({
-        title: '暂未开放~',
-        icon: 'none',
-      })
-    }
+
+  onShareAppMessage() {
+
+  },
+
+  onNaviCard(e) {
+    let {
+      title,
+      navigatemark
+    } = e.target.dataset
+    wx.navigateTo({
+      url: '/pages/navigator/content/index?title=' + title + '&navigatemark=' + navigatemark
+    })
+  },
+
+  onCard(e) {
+    // const path = e.target.dataset.path
+    wx.navigateTo({
+      url: '/pages/navigator/content/index?title=电商专题&navigatemark=shopping'
+    })
   }
 })
